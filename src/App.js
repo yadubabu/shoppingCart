@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProductDetail from "./components/ProductDetail";
+import ProductListing from "./components/ProductListing";
+import PageNotFound from "./components/PageNotFound";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProduct } from "./redux/actions/productActions";
+import { productApi } from "./redux/api/productApi";
 
-function App() {
+const App = () => {
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const renderProducts = async () => {
+    const response = await productApi.get("/products");
+    dispatch(fetchProduct(response));
+  };
+  useEffect(() => {
+    renderProducts();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Router>
+        <Routes>
+          <Route path="/" element={<ProductListing />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
+          <Route element={<PageNotFound />} />
+        </Routes>
+      </Router>
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;

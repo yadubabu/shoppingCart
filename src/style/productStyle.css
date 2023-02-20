@@ -1,0 +1,48 @@
+.product {
+  display: flex;
+}
+
+.block {
+  display: flex;
+}
+.block .dec {
+  flex-direction: column;
+}
+.block .dec p {
+  background-color: rgb(184, 31, 214);
+  width: 80px;
+  text-align: center;
+  margin-left: 30px;
+}
+.block .dec p button {
+  color: white;
+  background-color: tomato;
+  border: 2px white solid;
+  border-radius: 5px;
+}
+.block .dec .descr {
+  width: 200px;
+  background-color: white;
+  font-size: x-small;
+}
+.block .dec .cat {
+  width: 150px;
+  background-color: lightgray;
+  border-radius: 3px;
+}
+.block .dec .circle {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 10px;
+  margin-top: 94px;
+  transform: translate(-7px);
+}
+
+.block > p {
+  display: flex;
+  border: grey 2px solid;
+  border-radius: 5px;
+  width: 250px;
+  height: auto;
+}/*# sourceMappingURL=productStyle.css.map */
