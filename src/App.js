@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProduct } from "./redux/actions/productActions";
 import { productApi } from "./redux/api/productApi";
+import Test from "./Test";
+import { Toggle } from "./Toggle";
 
 const App = () => {
   const products = useSelector((state) => state.products);
@@ -22,7 +24,7 @@ const App = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header />
       <Router>
         <Routes>
           <Route path="/" element={<ProductListing />} />
@@ -30,7 +32,9 @@ const App = () => {
           <Route element={<PageNotFound />} />
         </Routes>
       </Router>
-      <Footer />
+      <Footer /> */}
+      {/* <Test /> */}
+      <Toggle />
     </div>
   );
 };
